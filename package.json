@@ -1,0 +1,8 @@
+{
+  "name": "Cardapio_Digital_ADA",
+  "type": "module",
+  "version": "1.0.0",
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}

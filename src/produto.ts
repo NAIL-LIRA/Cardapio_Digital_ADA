@@ -1,5 +1,3 @@
-// src/Produto.ts
-
 export class Produto {
   constructor(
     public id: number,
