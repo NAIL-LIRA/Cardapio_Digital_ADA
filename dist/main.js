@@ -3,6 +3,8 @@ import { Cardapio } from "./cardapio.js";
 const meuCardapio = new Cardapio();
 meuCardapio.carregarStorage();
 const form = document.getElementById("form-produto");
+const containerDoCardapio = document.getElementById("cardapio-conteiner");
+const campoBusca = document.getElementById("campo-busca");
 if (form) {
     form.addEventListener("submit", (event) => {
         event.preventDefault();

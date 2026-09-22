@@ -5,6 +5,8 @@ const meuCardapio = new Cardapio();
 meuCardapio.carregarStorage();
 
 const form = document.getElementById("form-produto") as HTMLFormElement;
+const containerDoCardapio = document.getElementById("cardapio-conteiner");
+const campoBusca = document.getElementById("campo-busca") as HTMLInputElement;
 
 if (form) {
   form.addEventListener("submit", (event) => {
