@@ -25,7 +25,8 @@ if (form) {
 
     const imagemUrlInput = (
       document.getElementById("imagemUrl") as HTMLInputElement
-    ).value;
+    ).value; //pelo que ta aqui a imagem não pode estar no computador, tem que estar em uma página da internet
+    //<input type="file"> e URL.createObjectURL().
 
     const id = Date.now();
 
