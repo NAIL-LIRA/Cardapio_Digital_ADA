@@ -8,55 +8,33 @@
     <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
-    <header>
-      <nav>
-        <h1>Cardápio Digital</h1>
-      </nav>
-    </header>
 
-    <main class="conteiner">
-      <!-- Seção do formulário para cadastro -->
-      <section class="form-section">
-        <h2>Cadastrar Novo Prato</h2>
-
-        <form id="form-produto">
-          <input type="text" id="nome" placeholder="Nome do Prato" required />
-          <input
-            type="number"
-            id="preco"
-            step="0.01"
-            placeholder="Preço (R$)"
-            required
-          />
-          <input
-            type="text"
-            id="descricao"
-            placeholder="Descrição do Prato"
-            required
-          />
-
-          <div class="campo-upload">
-            <label for="imagemFile" class="btn-upload">
-              <span class="icone-upload">📁</span>
-              <span id="texto-arquivo">Escolher imagem do computador</span>
-            </label>
-            <input type="file" id="imagemFile" accept="image/*" required />
+      <header>
+        <nav>
+          <h1>Cardápio Digital</h1>
+          <div>
+            <a href="">Pratos</a>
+            <a href="">Bebidas</a>
+            <a href="">Sobremesas</a>
           </div>
-
-          <button type="submit">Adicionar Prato</button>
-        </form>
-        <input
-          type="text"
-          id="campo-busca"
-          placeholder="Buscar prato pelo nome..."
-        />
-      </section>
-
+        </nav>
+      </header>
+  
+    <main class="conteiner">
       <!-- Seção do cardápio (Inicia 100% Vazio)-->
       <section class="cardapio-section">
         <h2>Nossos Pratos</h2>
         <div id="cardapio-conteiner" class="cardapio-grid"></div>
       </section>
     </main>
+    <footer>
+      <div id="endereco">
+        <p>Rua das Amoreiras, nº 1</p>
+        <p>Campo Grande</p>
+        <p>Rio de Janeiro, RJ</p>
+      </div>
+
+      <p id="direitos">by Grupo 4</p>
+    </footer>
   </body>
 </html>
