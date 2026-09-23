@@ -9,15 +9,32 @@ export class Cardapio {
         this.salvarStorage();
         this.renderizarCardapio("cardapio-conteiner");
     }
+    deletarProduto(id) {
+        this.produtos = this.produtos.filter((produto) => produto.id !== id);
+        this.salvarStorage();
+        this.renderizarCardapio("cardapio-conteiner");
+    }
+    filtrarPorNome(termo) {
+        const termoFormatado = termo.toLowerCase().trim();
+        const produtosFiltrados = this.produtos.filter((produto) => produto.nome.toLowerCase().includes(termoFormatado));
+        const conteiner = document.getElementById("cardapio-conteiner");
+        if (!conteiner)
+            return;
+        let htmlFinal = "";
+        for (const produto of produtosFiltrados) {
+            htmlFinal += produto.gerarHTML();
+        }
+        conteiner.innerHTML = htmlFinal;
+    }
     renderizarCardapio(idDoConteiner) {
-        const container = document.getElementById(idDoConteiner);
-        if (!container)
+        const conteiner = document.getElementById(idDoConteiner);
+        if (!conteiner)
             return;
         let htmlFinal = "";
         for (const produto of this.produtos) {
             htmlFinal += produto.gerarHTML();
         }
-        container.innerHTML = htmlFinal;
+        conteiner.innerHTML = htmlFinal;
     }
     salvarStorage() {
         const dadosParaSalvar = JSON.stringify(this.produtos);

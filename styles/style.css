@@ -1,28 +1,25 @@
-html{
-    scroll-behavior: smooth;
-    margin: 0px;
+html {
+  scroll-behavior: smooth;
+  margin: 0px;
 }
-nav{
-    display:flex;
-    background-color: rgb(105, 43, 43);
-    color: rgb(255, 253, 253);
-    font-family: sans-serif;
-    justify-content: center;
-    padding: 0px;
-
+nav {
+  display: flex;
+  background-color: rgb(105, 43, 43);
+  color: rgb(255, 253, 253);
+  font-family: sans-serif;
+  justify-content: center;
+  padding: 0px;
 }
-header{
-    position:sticky;
-    top: 0px;
+header {
+  position: sticky;
+  top: 0px;
 }
-
-.card-produto{
-background-color: rgb(215, 178, 178);
-border-radius: 10px;
-flex-wrap: wrap;
+.card-produto {
+  background-color: rgb(215, 178, 178);
+  border-radius: 10px;
+  flex-wrap: wrap;
 }
-
-  /* <div class="card-produto">
+/* <div class="card-produto">
       <img src="${this.imagemUrl}" alt="${this.nome}"> 
       <div class="card-conteudo">
           <h3>${this.nome}</h3>

@@ -12,17 +12,43 @@ export class Cardapio {
     this.renderizarCardapio("cardapio-conteiner");
   }
 
-  renderizarCardapio(idDoConteiner: string): void {
-    const container = document.getElementById(idDoConteiner);
+  deletarProduto(id: number): void {
+    this.produtos = this.produtos.filter((produto) => produto.id !== id);
+    this.salvarStorage();
+    this.renderizarCardapio("cardapio-conteiner");
+  }
 
-    if (!container) return;
+  filtrarPorNome(termo: string): void {
+    const termoFormatado = termo.toLowerCase().trim();
+
+    const produtosFiltrados = this.produtos.filter((produto) =>
+      produto.nome.toLowerCase().includes(termoFormatado),
+    );
+
+    const conteiner = document.getElementById("cardapio-conteiner");
+
+    if (!conteiner) return;
+
+    let htmlFinal = "";
+
+    for (const produto of produtosFiltrados) {
+      htmlFinal += produto.gerarHTML();
+    }
+
+    conteiner.innerHTML = htmlFinal;
+  }
+
+  renderizarCardapio(idDoConteiner: string): void {
+    const conteiner = document.getElementById(idDoConteiner);
+
+    if (!conteiner) return;
 
     let htmlFinal = "";
     for (const produto of this.produtos) {
       htmlFinal += produto.gerarHTML();
     }
 
-    container.innerHTML = htmlFinal;
+    conteiner.innerHTML = htmlFinal;
   }
 
   salvarStorage(): void {

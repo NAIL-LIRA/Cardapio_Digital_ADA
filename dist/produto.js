@@ -18,7 +18,7 @@ export class Produto {
       <img src="${this.imagemUrl}" alt="${this.nome}"> 
       <div class="card-conteudo">
           <h3>${this.nome}</h3>
-          <p class="descricao">${this.descricao}<p/>
+          <p class="descricao">${this.descricao}</p>
           <p class="preco">${this.preco.toFixed(2)}</p>
           <div class="card-acoes">
           <button class="btn-deletar" data-id="${this.id}">Deletar</button>
