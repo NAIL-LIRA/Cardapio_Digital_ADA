@@ -1,15 +1,62 @@
 export class Produto {
-    id;
-    nome;
-    preco;
-    descricao;
-    imagemUrl;
+    static ultimoId = 1000;
+    _id;
+    _nome = "";
+    _preco = 0;
+    _descricao;
+    _imagemUrl;
     constructor(id, nome, preco, descricao, imagemUrl) {
-        this.id = id;
+        this._id = id;
         this.nome = nome;
         this.preco = preco;
-        this.descricao = descricao;
-        this.imagemUrl = imagemUrl;
+        this._descricao = descricao;
+        this._imagemUrl = imagemUrl;
+    }
+    // --- MÉTODOS ESTÁTICOS ---
+    static gerarNovoId() {
+        this.ultimoId++;
+        return this.ultimoId;
+    }
+    // --- GETTERS E SETTERS ---
+    get id() {
+        return this._id;
+    }
+    get nome() {
+        return this._nome;
+    }
+    set nome(novoNome) {
+        if (typeof novoNome === "string") {
+            const nomeLimpo = novoNome.trim();
+            if (nomeLimpo.length >= 3) {
+                this._nome = nomeLimpo;
+            }
+            else {
+                console.warn(`O nome do produto deve ter pelo menos 03 caracteres.`);
+            }
+        }
+        else {
+            console.warn(`Nome inválido fornecido ao produto.`);
+        }
+    }
+    get preco() {
+        return this._preco;
+    }
+    set preco(novoPreco) {
+        if (novoPreco > 0) {
+            this._preco = novoPreco;
+        }
+        else {
+            console.warn(`O preço deve ser um valor maior que zero.`);
+        }
+    }
+    get descricao() {
+        return this._descricao;
+    }
+    get imagemUrl() {
+        return this._imagemUrl;
+    }
+    get precoFormatado() {
+        return `R$ ${this._preco.toFixed(2)}`;
     }
     // Retorna o HTML do card visual do produto
     gerarHTML(mostrarAcoes = false) {

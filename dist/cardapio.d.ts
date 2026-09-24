@@ -1,5 +1,6 @@
 import { Produto } from "./produto.js";
 export declare class Cardapio {
+    static readonly CHAVE_STORAGE = "cardapio_produtos";
     produtos: Produto[];
     constructor();
     adicionarProduto(produto: Produto): void;
