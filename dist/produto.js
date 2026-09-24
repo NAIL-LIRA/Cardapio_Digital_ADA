@@ -12,7 +12,10 @@ export class Produto {
         this.imagemUrl = imagemUrl;
     }
     // Retorna o HTML do card visual do produto
-    gerarHTML() {
+    gerarHTML(mostrarAcoes = false) {
+        const botaoDeletar = mostrarAcoes
+            ? `<div class="card-acoes"><button class="btn-deletar" data-id="${this.id}">Deletar</button></div>`
+            : ''; //se não for false(true), cria o botão deletar
         return `
   <div class="card-produto">
       <img src="${this.imagemUrl}" alt="${this.nome}"> 
@@ -20,9 +23,7 @@ export class Produto {
           <h3>${this.nome}</h3>
           <p class="descricao">${this.descricao}</p>
           <p class="preco">${this.preco.toFixed(2)}</p>
-          <div class="card-acoes">
-          <button class="btn-deletar" data-id="${this.id}">Deletar</button>
-          </div>
+          ${botaoDeletar}
       </div> 
   </div>`;
     }
