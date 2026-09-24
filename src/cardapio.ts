@@ -11,16 +11,16 @@ export class Cardapio {
   adicionarProduto(produto: Produto): void {
     this.produtos.push(produto);
     this.salvarStorage();
-    this.renderizarCardapio("cardapio-conteiner");
+    this.renderizarCardapio("cardapio-conteiner",true);
   }
 
   deletarProduto(id: number): void {
     this.produtos = this.produtos.filter((produto) => produto.id !== id);
     this.salvarStorage();
-    this.renderizarCardapio("cardapio-conteiner");
+    this.renderizarCardapio("cardapio-conteiner",true);
   }
 
-  filtrarPorNome(termo: string): void {
+  filtrarPorNome(termo: string,modoAdmin:boolean=false): void {
     const termoFormatado = termo.toLowerCase().trim();
 
     const produtosFiltrados = this.produtos.filter((produto) =>
@@ -34,20 +34,20 @@ export class Cardapio {
     let htmlFinal = "";
 
     for (const produto of produtosFiltrados) {
-      htmlFinal += produto.gerarHTML();
+      htmlFinal += produto.gerarHTML(modoAdmin);
     }
 
     conteiner.innerHTML = htmlFinal;
   }
 
-  renderizarCardapio(idDoConteiner: string): void {
+  renderizarCardapio(idDoConteiner: string, modoAdmin:boolean=false): void {
     const conteiner = document.getElementById(idDoConteiner);
 
     if (!conteiner) return;
 
     let htmlFinal = "";
     for (const produto of this.produtos) {
-      htmlFinal += produto.gerarHTML();
+      htmlFinal += produto.gerarHTML(modoAdmin);
     }
 
     conteiner.innerHTML = htmlFinal;
@@ -58,8 +58,8 @@ export class Cardapio {
     localStorage.setItem(Cardapio.CHAVE_STORAGE, dadosParaSalvar);
   }
 
-  carregarStorage(): void {
-    const dadosSalvos = localStorage.getItem(Cardapio.CHAVE_STORAGE);
+  carregarStorage(modoAdmin:boolean=false): void {
+    const dadosSalvos = localStorage.getItem("cardapio_produtos");
 
     if (dadosSalvos) {
       const produtosObjetos = JSON.parse(dadosSalvos);
@@ -76,7 +76,7 @@ export class Cardapio {
 
         this.produtos.push(novoProduto);
       }
-      this.renderizarCardapio("cardapio-conteiner");
+      this.renderizarCardapio("cardapio-conteiner",modoAdmin);
     }
   }
 }
