@@ -1,5 +1,6 @@
 import { Produto } from "./produto.js";
 export class Cardapio {
+    static CHAVE_STORAGE = "cardapio_produtos";
     produtos;
     constructor() {
         this.produtos = [];
@@ -38,15 +39,20 @@ export class Cardapio {
     }
     salvarStorage() {
         const dadosParaSalvar = JSON.stringify(this.produtos);
-        localStorage.setItem("cardapio_produtos", dadosParaSalvar);
+        localStorage.setItem(Cardapio.CHAVE_STORAGE, dadosParaSalvar);
     }
     carregarStorage() {
-        const dadosSalvos = localStorage.getItem("cardapio_produtos");
+        const dadosSalvos = localStorage.getItem(Cardapio.CHAVE_STORAGE);
         if (dadosSalvos) {
             const produtosObjetos = JSON.parse(dadosSalvos);
             this.produtos = [];
             for (const item of produtosObjetos) {
-                const novoProduto = new Produto(item.id, item.nome, item.preco, item.descricao, item.imagemUrl);
+                const id = item._id ?? item.id;
+                const nome = item._nome ?? item.nome ?? "";
+                const preco = item._preco ?? item.preco ?? 0;
+                const descricao = item._descricao ?? item.descricao ?? "";
+                const imagemUrl = item._imagemUrl ?? item.imagemUrl ?? "";
+                const novoProduto = new Produto(id, nome, preco, descricao, imagemUrl);
                 this.produtos.push(novoProduto);
             }
             this.renderizarCardapio("cardapio-conteiner");

@@ -19,7 +19,7 @@
       <section class="form-section">
         <h2>Cadastrar Novo Prato</h2>
 
-        <form id="form-produto">
+        <form id="form-produto" novalidate>
           <input type="text" id="nome" placeholder="Nome do Prato" required />
           <input
             type="number"
@@ -36,11 +36,12 @@
           />
 
           <div class="campo-upload">
-            <label for="imagemFile" class="btn-upload">
-              <span class="icone-upload">📁</span>
-              <span id="texto-arquivo">Escolher imagem do computador</span>
+            <label class="btn-upload">
+              <!-- <span class="icone-upload">📁</span>
+              <span id="texto-arquivo">Escolher imagem do computador</span> -->
+              <h3>Escolher imagem para o Cardápio</h3>
+              <input type="file" id="imagemFile" accept="image/*" required />
             </label>
-            <input type="file" id="imagemFile" accept="image/*" required />
           </div>
 
           <button type="submit">Adicionar Prato</button>

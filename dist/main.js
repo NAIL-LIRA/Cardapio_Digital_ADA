@@ -21,7 +21,7 @@ if (form) {
         const imagemUrl = arquivo
             ? URL.createObjectURL(arquivo)
             : "https://via.placeholder.com/300x180?text=Sem+Imagem";
-        const id = Date.now();
+        const id = Produto.gerarNovoId();
         const novoPrato = new Produto(id, nomeImput, precoInput, descricaoInput, imagemUrl);
         meuCardapio.adicionarProduto(novoPrato);
         form.reset();
